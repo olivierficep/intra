@@ -122,6 +122,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        // hello_the_world
+        if ($pathinfo === '/hello-world') {
+            return array (  '_controller' => 'OC\\PlatformBundle\\Controller\\AdvertController::indexAction',  '_route' => 'hello_the_world',);
+        }
+
         // _welcome
         if (rtrim($pathinfo, '/') === '') {
             if (substr($pathinfo, -1) !== '/') {
