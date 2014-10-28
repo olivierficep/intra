@@ -4,3 +4,8 @@ hello_the_world:
   path:       /hello-world
   defaults: { _controller: OCPlatformBundle:Advert:index }
 
+oc_platform_view:
+  path:       /advert/{id}
+  defaults:   { _controller: OCPlatformBundle:Advert:view }
+  requirements:
+    id: \d+ 
