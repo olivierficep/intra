@@ -3,9 +3,20 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Affichagede l annonce {{ id }}</title>
+		<title>Bienvenue sur ma première page</title>
 	</head>
 	<body>
-		<h1>Hello annonce n°{{ id }} !</h1>
+		<h1>Affichage d'une annonce</h1>
+		
+		<p>
+			{% for message in app.session.flashbag.get('info') %}
+				<p>Message Flash : {{ message }}</p>
+			{% endfor %}
+		</p>
+		
+		<p>
+			Ici nous pourrons lire l annonce ayant come id : {{ id }}<br />
+			Mais pour l instant rien
+		</p>
 	</body>
 </html>

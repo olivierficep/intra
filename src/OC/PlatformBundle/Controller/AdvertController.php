@@ -12,11 +12,28 @@ class AdvertController extends Controller
 {
 	public function indexAction()
 	{
-		return new Response("Hello World");
+		return new Response("Hello My World");
 	}	
 	
-	public function viewAction($id)
+	public function viewAction($id, Request $request)
 	{
-		return $this->render('OCPlatformBundle:Advert:view.html.twig', array('id' => $id ));
+		$session = $request->getSession();
+		
+		$userId = $session->get('user_id');
+		
+		$session->set('user_id', 91);
+		
+		return $this->render('OCPlatformBundle:Advert:view.html.twig', array('id' => $id));
+	}
+	
+	public function addAction(Request $request)
+	{
+		$session = $request->getSession();
+		
+		$session->getFlashBag()->add('info', 'annonce bien enregistrée');
+		
+		$session->getFlashBag()->add('info', 'Oui c est bien enregistré');
+		
+		return $this->redirect($this->generateUrl('oc_platform_view', array('id' => 5))) ;
 	}
 };

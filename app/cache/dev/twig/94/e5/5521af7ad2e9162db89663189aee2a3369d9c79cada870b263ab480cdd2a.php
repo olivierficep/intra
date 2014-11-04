@@ -20,16 +20,36 @@ class __TwigTemplate_94e55521af7ad2e9162db89663189aee2a3369d9c79cada870b263ab480
 <!DOCTYPE html>
 <html>
 \t<head>
-\t\t<title>Affichagede l annonce ";
-        // line 6
-        echo twig_escape_filter($this->env, (isset($context["id"]) ? $context["id"] : $this->getContext($context, "id")), "html", null, true);
-        echo "</title>
+\t\t<title>Bienvenue sur ma première page</title>
 \t</head>
 \t<body>
-\t\t<h1>Hello annonce n°";
-        // line 9
+\t\t<h1>Affichage d'une annonce</h1>
+\t\t
+\t\t<p>
+\t\t\t";
+        // line 12
+        $context['_parent'] = (array) $context;
+        $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "session"), "flashbag"), "get", array(0 => "info"), "method"));
+        foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
+            // line 13
+            echo "\t\t\t\t<p>Message Flash : ";
+            echo twig_escape_filter($this->env, (isset($context["message"]) ? $context["message"] : $this->getContext($context, "message")), "html", null, true);
+            echo "</p>
+\t\t\t";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 15
+        echo "\t\t</p>
+\t\t
+\t\t<p>
+\t\t\tIci nous pourrons lire l annonce ayant come id : ";
+        // line 18
         echo twig_escape_filter($this->env, (isset($context["id"]) ? $context["id"] : $this->getContext($context, "id")), "html", null, true);
-        echo " !</h1>
+        echo "<br />
+\t\t\tMais pour l instant rien
+\t\t</p>
 \t</body>
 </html>";
     }
@@ -46,6 +66,6 @@ class __TwigTemplate_94e55521af7ad2e9162db89663189aee2a3369d9c79cada870b263ab480
 
     public function getDebugInfo()
     {
-        return array (  31 => 9,  25 => 6,  19 => 2,);
+        return array (  49 => 18,  44 => 15,  35 => 13,  31 => 12,  19 => 2,);
     }
 }
