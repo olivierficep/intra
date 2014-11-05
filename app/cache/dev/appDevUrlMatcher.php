@@ -122,9 +122,9 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
-        // hello_the_world
-        if ($pathinfo === '/hello-world') {
-            return array (  '_controller' => 'OC\\PlatformBundle\\Controller\\AdvertController::indexAction',  '_route' => 'hello_the_world',);
+        // oc_platform_home
+        if (preg_match('#^/(?P<page>\\d*)?$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'oc_platform_home')), array (  '_controller' => 'OC\\PlatformBundle\\Controller\\AdvertController::indexAction',  'page' => 1,));
         }
 
         if (0 === strpos($pathinfo, '/ad')) {
@@ -138,6 +138,16 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return array (  '_controller' => 'OC\\PlatformBundle\\Controller\\AdvertController::addAction',  '_route' => 'oc_platform_add',);
             }
 
+        }
+
+        // oc_platform_edit
+        if (0 === strpos($pathinfo, '/edit') && preg_match('#^/edit/(?P<id>\\d+)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'oc_platform_edit')), array (  '_controller' => 'OC\\PlatformBundle\\Controller\\AdvertController::editAction',));
+        }
+
+        // oc_platform_delete
+        if ($pathinfo === '/delete') {
+            return array (  '_controller' => 'OC\\PlatformBundle\\Controller\\AdvertController::deleteAction',  '_route' => 'oc_platform_delete',);
         }
 
         // _welcome

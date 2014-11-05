@@ -1,0 +1,3 @@
+ficep_planning_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: FicepPlanningBundle:Default:index }
