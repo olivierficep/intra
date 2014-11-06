@@ -25,10 +25,11 @@ class AdvertController extends Controller
 		
 		// Appel du template
 		//return $this->render('OCPlatformBundle:Advert:index.html.twig') ;
-		$week = 45;
-		$year = 2014;
+		//$week = 45;
+		$year = 2007;
 		//return new Response(date('D d M Y', strtotime("last monday", strtotime(($week-1)." week", strtotime('1/1/'.$year)))));
-		return new Response(date('d/m/y', strtotime("friday ".($week-1)."week", strtotime('1/1/'.$year))));
+		//return new Response(date('d/m/y', strtotime("tuesday", strtotime('11/3/'.$year))));
+		return new Response(date('N', strtotime('01/01/'.$year)));
 	}
 	
 	public function viewAction($id)

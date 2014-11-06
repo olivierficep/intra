@@ -122,6 +122,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        // ficep_planning_homepage
+        if (0 === strpos($pathinfo, '/planning') && preg_match('#^/planning/(?P<week>[^/]++)/(?P<year>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'ficep_planning_homepage')), array (  '_controller' => 'Ficep\\PlanningBundle\\Controller\\DefaultController::indexAction',));
+        }
+
         // oc_platform_home
         if (preg_match('#^/(?P<page>\\d*)?$#s', $pathinfo, $matches)) {
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'oc_platform_home')), array (  '_controller' => 'OC\\PlatformBundle\\Controller\\AdvertController::indexAction',  'page' => 1,));

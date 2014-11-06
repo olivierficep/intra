@@ -1,1 +1,30 @@
-Hello {{ name }}!
+{# src/Ficep/PlanningBundle/index.html.twig #}
+
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Affichage planning</title>
+	</head>
+	<body>
+		<div align="middle">
+			<table cellspacing="2px;" cellpadding="2px;" style="border: solid 1px black;" width="80%" rules="all">
+				<caption>Week number {{ week }} {{ year }}</caption>
+				<tr>
+					<td align="middle" width="20%">Technician's Name</td>
+					{% for day in date %}
+					<td align="middle" width="16%">{{ day|date('d/m/y') }}</td>
+					{% endfor %}
+				</tr>
+				<tr>
+					<td align="middle" width="20%">Technician's Name</td>
+					<td align="middle" width="16%">t</td>
+					<td align="middle" width="16%">t</td>
+					<td align="middle" width="16%">t</td>
+					<td align="middle" width="16%">t</td>
+					<td align="middle" width="16%">t</td>
+				</tr>
+			</table>
+		</div>
+	</body>
+</html>

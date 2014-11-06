@@ -1,3 +1,3 @@
 ficep_planning_homepage:
-    path:     /hello/{name}
+    path:     /planning/{week}/{year}
     defaults: { _controller: FicepPlanningBundle:Default:index }
