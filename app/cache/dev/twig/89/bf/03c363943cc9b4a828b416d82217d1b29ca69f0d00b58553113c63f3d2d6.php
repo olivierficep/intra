@@ -25,7 +25,7 @@ class __TwigTemplate_89bf03c363943cc9b4a828b416d82217d1b29ca69f0d00b58553113c63f
 \t</head>
 \t<body>
 \t\t<div align=\"middle\">
-\t\t\t<table cellspacing=\"2px;\" cellpadding=\"2px;\" style=\"border: solid 1px black;\" width=\"80%\" rules=\"all\">
+\t\t\t<table cellspacing=\"2px;\" cellpadding=\"2px;\" style=\"border: solid 1px black;\" width=\"60%\" rules=\"all\">
 \t\t\t\t<caption>Week number ";
         // line 12
         echo twig_escape_filter($this->env, (isset($context["week"]) ? $context["week"] : $this->getContext($context, "week")), "html", null, true);
@@ -57,6 +57,12 @@ class __TwigTemplate_89bf03c363943cc9b4a828b416d82217d1b29ca69f0d00b58553113c63f
 \t\t\t\t\t<td align=\"middle\" width=\"16%\">t</td>
 \t\t\t\t\t<td align=\"middle\" width=\"16%\">t</td>
 \t\t\t\t\t<td align=\"middle\" width=\"16%\">t</td>
+\t\t\t\t</tr>
+\t\t\t\t<tr>
+\t\t\t\t\t<td align=\"middle\" width=\"20%\">Technician's Name 2</td>
+\t\t\t\t\t<td colspan=\"3\" align=\"middle\">test activité</td>
+\t\t\t\t\t<td></td>
+\t\t\t\t\t<td></td>
 \t\t\t\t</tr>
 \t\t\t</table>
 \t\t</div>
