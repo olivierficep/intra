@@ -184,3 +184,8 @@ a35e22,127.0.0.1,GET,http://localhost/Symfony/web/app_dev.php/planning/45/2014,1
 a5d59f,127.0.0.1,GET,http://localhost/Symfony/web/app_dev.php/planning/45/2013,1415371142,
 e40042,127.0.0.1,GET,http://localhost/Symfony/web/app_dev.php/planning/45/2013,1415371391,
 b4dfbf,127.0.0.1,GET,http://localhost/Symfony/web/app_dev.php/planning/45/2013,1415371403,
+5e4820,127.0.0.1,GET,http://localhost/Symfony/web/app_dev.php/planning/45/2013,1415777404,
+6cfab7,127.0.0.1,GET,http://localhost/Symfony/web/app_dev.php/planning/45,1415805422,f08264
+f08264,127.0.0.1,GET,http://localhost/Symfony/web/app_dev.php/planning/45,1415805422,
+639874,127.0.0.1,GET,http://localhost/Symfony/web/app_dev.php/planning/45/2014,1415805440,
+4db668,127.0.0.1,GET,http://localhost/Symfony/web/app_dev.php/planning/45/2013,1415805473,

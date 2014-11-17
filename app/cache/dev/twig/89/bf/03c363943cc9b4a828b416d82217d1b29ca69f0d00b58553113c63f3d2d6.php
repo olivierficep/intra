@@ -59,8 +59,8 @@ class __TwigTemplate_89bf03c363943cc9b4a828b416d82217d1b29ca69f0d00b58553113c63f
 \t\t\t\t\t<td align=\"middle\" width=\"16%\">t</td>
 \t\t\t\t</tr>
 \t\t\t\t<tr>
-\t\t\t\t\t<td align=\"middle\" width=\"20%\">Technician's Name 2</td>
-\t\t\t\t\t<td colspan=\"3\" align=\"middle\">test activité</td>
+\t\t\t\t\t<td align=\"middle\">Technician's Name 2</td>
+\t\t\t\t\t<td colspan=\"3\" align=\"middle\">1201 CRAI</td>
 \t\t\t\t\t<td></td>
 \t\t\t\t\t<td></td>
 \t\t\t\t</tr>
