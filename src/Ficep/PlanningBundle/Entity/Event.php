@@ -19,6 +19,13 @@ class Event
 	 */
 	 
 	 private $technicians;
+	 
+	 /**
+	 * @ORM\ManyToOne(targetEntity="Ficep\PlanningBundle\Entity\Custommer")
+	 * @ORM\JoinColumn(nullable=false)
+	 */
+	 
+	 private $custommers;
 	
 	
     /**
@@ -153,5 +160,28 @@ class Event
     public function getTechnicians()
     {
         return $this->technicians;
+    }
+
+    /**
+     * Set custommers
+     *
+     * @param \Ficep\PlanningBundle\Entity\Custommer $custommers
+     * @return Event
+     */
+    public function setCustommers(\Ficep\PlanningBundle\Entity\Custommer $custommers)
+    {
+        $this->custommers = $custommers;
+    
+        return $this;
+    }
+
+    /**
+     * Get custommers
+     *
+     * @return \Ficep\PlanningBundle\Entity\Custommer 
+     */
+    public function getCustommers()
+    {
+        return $this->custommers;
     }
 }
