@@ -1,3 +1,9 @@
 ficep_planning_homepage:
     path:     /planning/{week}/{year}
     defaults: { _controller: FicepPlanningBundle:Default:index }
+ficep_planning_addTechnician:
+    path:     /technician/add
+    defaults: { _controller: FicepPlanningBundle:Technician:add }
+ficep_planning_listTechnician:
+    path:     /technician/{id}
+    defaults: { _controller: FicepPlanningBundle:Technician:list }
