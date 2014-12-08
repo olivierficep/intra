@@ -3,6 +3,7 @@
 namespace Ficep\PlanningBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 
 /**
  * TechnicianRepository
@@ -12,4 +13,11 @@ use Doctrine\ORM\EntityRepository;
  */
 class TechnicianRepository extends EntityRepository
 {
+	public function getTechnicians($page, $nbPerPage)
+	{
+		$query = $this->createQueryBuilder('a')->getQuery();
+		$query->setFirstResult(($page-1) * $nbPerPage)
+		      ->setMaxResults($nbPerPage);
+	  	return new Paginator($query, true);
+	}
 }

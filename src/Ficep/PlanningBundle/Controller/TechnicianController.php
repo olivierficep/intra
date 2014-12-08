@@ -33,21 +33,37 @@ class TechnicianController extends Controller
 		 return $this->render('FicepPlanningBundle:Technician:add.html.twig', array('form' => $form->createView()));
 	}
 	
-	public function listAction($id)
+	public function listAction($id, $page)
 	{
 		$repository = $this->getDoctrine()->getManager()->getRepository('FicepPlanningBundle:Technician');
 		if ( $id == 'all' )
 		{
-			$technicians = $repository->findAll();
+			if ( $page < 1 )
+			{
+				throw $this->createNotFoundException('Cette page n existe pas');
+			}
+			$nbPerPage = 3;
+			$technicians = $repository->getTechnicians($page, $nbPerPage);
+			
+			$nbPages = ceil(count($technicians)/$nbPerPage);
+			
+			if ( $page > $nbPages )
+			{
+				throw $this->createNotFoundException('Cette page n existe pas');
+			}
 		}
 		else {
 			$technicians[0] = $repository->find($id) ;
+			$nbPages = 0; // definition a 0 pour envoyer la vue
+			$page = 0; // definition a 0 poour envoyer la vue
 			if (!$technicians[0])
 			{
 				throw $this->createNotFoundException('Ce technicien n\'existe pas');
 			}
 		}
-		return $this->render('FicepPlanningBundle:Technician:list.html.twig', array('technicians' => $technicians ));
+		return $this->render('FicepPlanningBundle:Technician:list.html.twig', array('technicians' => $technicians,
+																					'nbPages' => $nbPages,
+																					'page' => $page ));
 	}
 	
 	public function deleteAction($id)

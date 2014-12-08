@@ -15,5 +15,13 @@
 			{{ technician.name }} {{ technician.firstName }} {{ technician.email }} <a href="{{ path('ficep_planning_deleteTechnician', 
 			{'id' : technician.id}) }}">remove</a> <a href="{{ path('ficep_plannning_editTechnician', {'id' : technician.id}) }}">edit</a>
 		{% endfor %}
+		
+		<br />
+		
+		{% for p in range(1, nbPages) %}
+		&nbsp
+		<a href="{{ path('ficep_planning_listTechnician', {'id' : 'all', 'page' : p })}}"> {{ p }}</a>
+		
+		{% endfor %}
 	</body>
 </html>
