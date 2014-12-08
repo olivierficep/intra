@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Liste des techniciens</title>
+	</head>
+	<body>
+		liste de technicien
+		{% for technician in technicians %}
+			<br />
+			{{ technician.name }} {{ technician.firstName }} {{ technician.email }}
+		{% endfor %}
+	</body>
+</html>

@@ -5,5 +5,5 @@ ficep_planning_addTechnician:
     path:     /technician/add
     defaults: { _controller: FicepPlanningBundle:Technician:add }
 ficep_planning_listTechnician:
-    path:     /technician/{id}
+    path:     /technician/list/{id}
     defaults: { _controller: FicepPlanningBundle:Technician:list }

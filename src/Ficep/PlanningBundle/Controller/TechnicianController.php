@@ -33,9 +33,21 @@ class TechnicianController extends Controller
 		 return $this->render('FicepPlanningBundle:Technician:add.html.twig', array('form' => $form->createView()));
 	}
 	
-	public function listAction()
+	public function listAction($id)
 	{
-		
+		$repository = $this->getDoctrine()->getManager()->getRepository('FicepPlanningBundle:Technician');
+		if ( $id == 'all' )
+		{
+			$technicians = $repository->findAll();
+		}
+		else {
+			$technicians[0] = $repository->find($id) ;
+			if (!$technicians[0])
+			{
+				throw $this->createNotFoundException('Ce technicien n\'existe pas');
+			}
+		}
+		return $this->render('FicepPlanningBundle:Technician:list.html.twig', array('technicians' => $technicians ));
 	}
 	
 }
