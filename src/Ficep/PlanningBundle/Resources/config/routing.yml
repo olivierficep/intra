@@ -7,3 +7,9 @@ ficep_planning_addTechnician:
 ficep_planning_listTechnician:
     path:     /technician/list/{id}
     defaults: { _controller: FicepPlanningBundle:Technician:list }
+ficep_planning_deleteTechnician:
+    path:     /technician/delete/{id}
+    defaults: { _controller: FicepPlanningBundle:Technician:delete }
+ficep_plannning_editTechnician:
+    path:     /technician/edit/{id}
+    defaults: { _controller: FicepPlanningBundle:Technician:edit }

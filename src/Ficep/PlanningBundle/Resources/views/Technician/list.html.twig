@@ -5,10 +5,15 @@
 		<title>Liste des techniciens</title>
 	</head>
 	<body>
-		liste de technicien
+		{% if app.session.flashbag.has('notice') %}
+			{{ app.session.flashbag.get('notice')[0] }}
+			<br />
+		{% endif %}
+		liste de techniciens
 		{% for technician in technicians %}
 			<br />
-			{{ technician.name }} {{ technician.firstName }} {{ technician.email }}
+			{{ technician.name }} {{ technician.firstName }} {{ technician.email }} <a href="{{ path('ficep_planning_deleteTechnician', 
+			{'id' : technician.id}) }}">remove</a> <a href="{{ path('ficep_plannning_editTechnician', {'id' : technician.id}) }}">edit</a>
 		{% endfor %}
 	</body>
 </html>
