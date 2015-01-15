@@ -45,11 +45,16 @@ class TechnicianController extends Controller
 			$nbPerPage = 3;
 			$technicians = $repository->getTechnicians($page, $nbPerPage);
 			
+			if( count($technicians) == 0 )
+			{
+				throw $this->createNotFoundException('pas de tech');
+			}
+			
 			$nbPages = ceil(count($technicians)/$nbPerPage);
 			
 			if ( $page > $nbPages )
 			{
-				throw $this->createNotFoundException('Cette page n existe pas');
+				return $this->redirect($this->generateUrl('ficep_planning_listTechnician', array('id' => 'all')));
 			}
 		}
 		else {
@@ -80,14 +85,16 @@ class TechnicianController extends Controller
 		$em->flush();
 		$session = $this->container->get('session');
 		$session->getFlashBag()->add('notice', 'Technicien bien supprimé.');
-		return $this->redirect($this->generateUrl('ficep_planning_listTechnician', array('id' => 'all')));
+		$referer = $this->getRequest()->headers->get('referer');
+		return $this->redirect($referer);
+		//return $this->redirect($this->generateUrl('ficep_planning_listTechnician', array('id' => 'all')));
 	}
 	
 	public function editAction($id, Request $request)
 	{
+		
 		$repository = $this->getDoctrine()->getManager()->getRepository('FicepPlanningBundle:Technician');
 		$technician = $repository->find($id);
-		
 		
 		if (!$technician)
 		{
@@ -95,11 +102,14 @@ class TechnicianController extends Controller
 		}
 		
 		$form = $this->get('form.factory')->create(new TechnicianType, $technician);
-
+		// ajout d un champs caché pour revenir sur la page précedente
+		$form->add('redirect_url', 'hidden', array('mapped' => false, 'data'=>$this->getRequest()->server->get('HTTP_REFERER')));
+		
 		$form->handleRequest($request);
 		
 		if ($form->isValid())
 		{
+			$referer= $form->get('redirect_url')->getData();
 			$em = $this->getDoctrine()->getManager();
 			$em->persist($technician);
 			$em->flush();
@@ -108,7 +118,9 @@ class TechnicianController extends Controller
 			
 			$session = $this->container->get('session');
 			$session->getFlashBag()->add('notice', 'Technicien bien modifié.');
-			return $this->redirect($this->generateUrl('ficep_planning_listTechnician', array('id' => 'all')));
+
+			return $this->redirect($referer);
+			//return $this->redirect($this->generateUrl('ficep_planning_listTechnician', array('id' => 'all')));
 		}
 		
 		 return $this->render('FicepPlanningBundle:Technician:add.html.twig', array('form' => $form->createView()));

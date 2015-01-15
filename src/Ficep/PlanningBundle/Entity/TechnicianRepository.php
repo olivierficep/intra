@@ -18,6 +18,6 @@ class TechnicianRepository extends EntityRepository
 		$query = $this->createQueryBuilder('a')->getQuery();
 		$query->setFirstResult(($page-1) * $nbPerPage)
 		      ->setMaxResults($nbPerPage);
-	  	return new Paginator($query, true);
+	  	return new Paginator($query);
 	}
 }

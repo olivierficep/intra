@@ -1,6 +1,7 @@
 ficep_planning_homepage:
     path:     /planning/{week}/{year}
     defaults: { _controller: FicepPlanningBundle:Default:index }
+    
 ficep_planning_addTechnician:
     path:     /technician/add
     defaults: { _controller: FicepPlanningBundle:Technician:add }
@@ -13,3 +14,7 @@ ficep_planning_deleteTechnician:
 ficep_plannning_editTechnician:
     path:     /technician/edit/{id}
     defaults: { _controller: FicepPlanningBundle:Technician:edit }
+    
+ficep_planning_addCustommer:
+    path:     /custommer/add
+    defaults: { _controller: FicepPlanningBundle:Custommer:add }
