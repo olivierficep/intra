@@ -34,6 +34,14 @@ Class CustommerController extends Controller
 	
 	public function listAction ($id, $page)
 	{
-		
+		$repository = $this->getDoctrine()->getManager()->getRepository('FicepPlanningBundle:Custommer');
+		if ( $id == 'all')
+		{
+			if ( $page < 1 )
+			{
+				throw $this->createNotFoundException('Cette page n existe pas');
+			}
+			
+		}
 	}
 }
