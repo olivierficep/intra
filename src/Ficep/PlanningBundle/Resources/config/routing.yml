@@ -22,4 +22,4 @@ ficep_planning_addCustommer:
     defaults: { _controller: FicepPlanningBundle:Custommer:add }
 ficep_planning_listCustommer:
     path:     /custommer/list/{id}/{page}
-    defaults: { _controller: FicepPlanningBundle:Custommer:list, id:all, page: 1}
+    defaults: { _controller: FicepPlanningBundle:Custommer:list, id: all, page: 1}
