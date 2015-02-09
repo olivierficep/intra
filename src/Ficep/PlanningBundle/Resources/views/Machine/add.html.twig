@@ -1,0 +1,18 @@
+{# src/Ficep/PlanningBundle/Resources/views/Machine/add.html.twig #}
+
+<!DOCTYPE html>
+
+<head>
+	<title>Création machine</title>
+</head>
+<body>
+	
+	{% if app.session.flashbag.has('notice') %}
+		{{ app.session.flashbag.get('notice')[0] }}
+	{% endif %}
+	<h3>Création mzchine</h3>
+
+	<div class="well">
+	  {{ form(form) }}
+	</div>
+</body>

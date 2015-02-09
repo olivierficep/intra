@@ -186,3 +186,12 @@ e20c3b,127.0.0.1,GET,http://localhost/Symfony/web/app_dev.php/machine/add,142348
 2e2d45,127.0.0.1,GET,http://localhost/Symfony/web/app_dev.php/machine/add,1423489628,
 0fbcf2,127.0.0.1,POST,http://localhost/Symfony/web/app_dev.php/machine/add,1423489643,
 dd25e0,127.0.0.1,GET,http://localhost/Symfony/web/app_dev.php/machine/add,1423489645,
+7d9937,127.0.0.1,GET,http://localhost/Symfony/web/app_dev.php/machine/list,1423491057,ed2f9b
+ed2f9b,127.0.0.1,GET,http://localhost/Symfony/web/app_dev.php/machine/list,1423491057,
+3e8eb3,127.0.0.1,GET,http://localhost/Symfony/web/app_dev.php/machine/list,1423491081,2253a0
+2253a0,127.0.0.1,GET,http://localhost/Symfony/web/app_dev.php/machine/list,1423491081,
+225785,127.0.0.1,GET,http://localhost/Symfony/web/app_dev.php/machine/list,1423491094,218a6f
+218a6f,127.0.0.1,GET,http://localhost/Symfony/web/app_dev.php/machine/list,1423491094,
+b3eeed,127.0.0.1,GET,http://localhost/Symfony/web/app_dev.php/machine/list,1423491111,
+2cbcc6,127.0.0.1,GET,http://localhost/Symfony/web/app_dev.php/machine/edit/1,1423491118,0f4973
+0f4973,127.0.0.1,GET,http://localhost/Symfony/web/app_dev.php/machine/edit/1,1423491118,
