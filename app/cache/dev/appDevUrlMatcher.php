@@ -176,6 +176,29 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        if (0 === strpos($pathinfo, '/machine')) {
+            // ficep_planning_addMachine
+            if ($pathinfo === '/machine/add') {
+                return array (  '_controller' => 'Ficep\\PlanningBundle\\Controller\\MachineController::addAction',  '_route' => 'ficep_planning_addMachine',);
+            }
+
+            // ficep_planning_listMachine
+            if (0 === strpos($pathinfo, '/machine/list') && preg_match('#^/machine/list(?:/(?P<id>[^/]++)(?:/(?P<page>[^/]++))?)?$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'ficep_planning_listMachine')), array (  '_controller' => 'Ficep\\PlanningBundle\\Controller\\MachineController::listAction',  'id' => 'all',  'page' => 1,));
+            }
+
+            // ficep_planning_deleteMachine
+            if (0 === strpos($pathinfo, '/machine/delete') && preg_match('#^/machine/delete/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'ficep_planning_deleteMachine')), array (  '_controller' => 'Ficep\\PlanningBundle\\Controller\\MachineController::deleteAction',));
+            }
+
+            // ficep_planning_editMachine
+            if (0 === strpos($pathinfo, '/machine/edit') && preg_match('#^/machine/edit/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'ficep_planning_editMachine')), array (  '_controller' => 'Ficep\\PlanningBundle\\Controller\\MachineController::editAction',));
+            }
+
+        }
+
         // oc_platform_home
         if (preg_match('#^/(?P<page>\\d*)?$#s', $pathinfo, $matches)) {
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'oc_platform_home')), array (  '_controller' => 'OC\\PlatformBundle\\Controller\\AdvertController::indexAction',  'page' => 1,));
