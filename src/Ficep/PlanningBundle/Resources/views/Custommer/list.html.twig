@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title>Liste des clients</title>
+	</head>
+	<body>
+		{% if app.session.flashbag.has('notice') %}
+			{{ app.session.flashbag.get('notice')[0] }}
+			<br />
+		{% endif %}
+		liste de clients
+		{% for custommer in custommers %}
+			<br />
+			{{ custommer.name }} {{ custommer.adress }} {{ custommer.zip }} <a href="{{ path('ficep_planning_deleteCustommer', 
+			{'id' : custommer.id}) }}">remove</a> <a href="{{ path('ficep_planning_editCustommer', {'id' : custommer.id}) }}">edit</a>
+		{% endfor %}
+		
+		<br />
+		{% if page > 0 %}
+			{% for p in range(1, nbPages) %}
+			&nbsp;
+			<a href="{{ path('ficep_planning_listCustommer', {'id' : 'all', 'page' : p })}}"> {{ p }}</a>
+			
+			{% endfor %}
+		{% endif %}
+	</body>
+</html>

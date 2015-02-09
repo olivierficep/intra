@@ -3,6 +3,7 @@
 namespace Ficep\PlanningBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 
 /**
  * CustommerRepository
@@ -12,4 +13,11 @@ use Doctrine\ORM\EntityRepository;
  */
 class CustommerRepository extends EntityRepository
 {
+		public function getCustommers($page, $nbPerPage)
+	{
+		$query = $this->createQueryBuilder('a')->getQuery();
+		$query->setFirstResult(($page-1) * $nbPerPage)
+		      ->setMaxResults($nbPerPage);
+	  	return new Paginator($query);
+	}
 }

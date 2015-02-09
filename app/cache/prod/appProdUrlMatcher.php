@@ -27,6 +27,34 @@ class appProdUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirecta
         $context = $this->context;
         $request = $this->request;
 
+        // ficep_planning_homepage
+        if (0 === strpos($pathinfo, '/planning') && preg_match('#^/planning/(?P<week>[^/]++)/(?P<year>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'ficep_planning_homepage')), array (  '_controller' => 'Ficep\\PlanningBundle\\Controller\\DefaultController::indexAction',));
+        }
+
+        if (0 === strpos($pathinfo, '/technician')) {
+            // ficep_planning_addTechnician
+            if ($pathinfo === '/technician/add') {
+                return array (  '_controller' => 'Ficep\\PlanningBundle\\Controller\\TechnicianController::addAction',  '_route' => 'ficep_planning_addTechnician',);
+            }
+
+            // ficep_planning_listTechnician
+            if (0 === strpos($pathinfo, '/technician/list') && preg_match('#^/technician/list(?:/(?P<id>[^/]++)(?:/(?P<page>[^/]++))?)?$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'ficep_planning_listTechnician')), array (  '_controller' => 'Ficep\\PlanningBundle\\Controller\\TechnicianController::listAction',  'id' => 'all',  'page' => 1,));
+            }
+
+            // ficep_planning_deleteTechnician
+            if (0 === strpos($pathinfo, '/technician/delete') && preg_match('#^/technician/delete/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'ficep_planning_deleteTechnician')), array (  '_controller' => 'Ficep\\PlanningBundle\\Controller\\TechnicianController::deleteAction',));
+            }
+
+            // ficep_plannning_editTechnician
+            if (0 === strpos($pathinfo, '/technician/edit') && preg_match('#^/technician/edit/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'ficep_plannning_editTechnician')), array (  '_controller' => 'Ficep\\PlanningBundle\\Controller\\TechnicianController::editAction',));
+            }
+
+        }
+
         // oc_platform_home
         if (preg_match('#^/(?P<page>\\d*)?$#s', $pathinfo, $matches)) {
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'oc_platform_home')), array (  '_controller' => 'OC\\PlatformBundle\\Controller\\AdvertController::indexAction',  'page' => 1,));

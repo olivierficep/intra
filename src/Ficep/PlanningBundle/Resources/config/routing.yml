@@ -23,3 +23,25 @@ ficep_planning_addCustommer:
 ficep_planning_listCustommer:
     path:     /custommer/list/{id}/{page}
     defaults: { _controller: FicepPlanningBundle:Custommer:list, id: all, page: 1}
+ficep_planning_deleteCustommer:
+    path:     /cutommer/delete/{id}
+    defaults: { _controller: FicepPlanningBundle:Custommer:delete }
+ficep_planning_editCustommer:
+    path:     /custommer/edit/{id}
+    defaults: { _controller: FicepPlanningBundle:Custommer:edit }
+    
+    
+ficep_planning_addMachine:
+    path:     /machine/add
+    defaults: { _controller: FicepPlanningBundle:Machine:add }
+ficep_planning_listMachine:
+    path:     /machine/list/{id}/{page}
+    defaults: { _controller: FicepPlanningBundle:Machine:list, id: all, page: 1}
+ficep_planning_deleteMachine:
+    path:     /machine/delete/{id}
+    defaults: { _controller: FicepPlanningBundle:Machine:delete }
+ficep_planning_editMachine:
+    path:     /machine/edit/{id}
+    defaults: { _controller: FicepPlanningBundle:Machine:edit }
+    
+
