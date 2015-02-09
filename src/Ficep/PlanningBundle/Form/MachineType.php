@@ -17,8 +17,9 @@ class MachineType extends AbstractType
         $builder
             ->add('type',		'text')
             ->add('mat',		'text')
-            ->add('custommers',	'entity', array('class' => 'FicepPlannibgBundle:Custommer',
-												'property' => 'name'))
+            ->add('custommers',	'entity', array('class' => 'FicepPlanningBundle:Custommer',
+												'property' => 'name',
+												'required' => false))
 			->add('save',		'submit')
         ;
     }
