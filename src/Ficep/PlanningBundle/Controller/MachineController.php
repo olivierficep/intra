@@ -70,4 +70,59 @@ class MachineController extends Controller
 																					'nbPages' => $nbPages,
 																					'page' => $page ));
 	}
+
+	public function deleteAction($id)
+	{
+		$repository = $this->getDoctrine()->getManager()->getRepository('FicepPlanningBundle:Machine');
+		$em = $this->getDoctrine()->getManager();
+		$machine = $repository->find($id);
+		if ( !$machine )
+		{
+			throw $this->createNotFoundException('Ce technicien n\'existe pas');
+		}
+		
+		$em->remove($machine);
+		$em->flush();
+		$session = $this->container->get('session');
+		$session->getFlashBag()->add('notice', 'Technicien bien supprimé.');
+		$referer = $this->getRequest()->headers->get('referer');
+		return $this->redirect($referer);
+		//return $this->redirect($this->generateUrl('ficep_planning_listTechnician', array('id' => 'all')));
+	}
+	
+	public function editAction($id, Request $request)
+	{
+		
+		$repository = $this->getDoctrine()->getManager()->getRepository('FicepPlanningBundle:Machine');
+		$machine = $repository->find($id);
+		
+		if (!$machine)
+		{
+			throw $this->createNotFoundException('Cette machine n\'existe pas');
+		}
+		
+		$form = $this->get('form.factory')->create(new MachineType, $machine);
+		// ajout d un champs caché pour revenir sur la page précedente
+		$form->add('redirect_url', 'hidden', array('mapped' => false, 'data'=>$this->getRequest()->server->get('HTTP_REFERER')));
+		
+		$form->handleRequest($request);
+		
+		if ($form->isValid())
+		{
+			$referer= $form->get('redirect_url')->getData();
+			$em = $this->getDoctrine()->getManager();
+			$em->persist($machine);
+			$em->flush();
+			
+			//message pour confirmer que l'opération c est bien passé puis redirection vers le forulaire pour crééer un nouveau technicien
+			
+			$session = $this->container->get('session');
+			$session->getFlashBag()->add('notice', 'Machine bien modifiée.');
+
+			return $this->redirect($referer);
+			//return $this->redirect($this->generateUrl('ficep_planning_listTechnician', array('id' => 'all')));
+		}
+		
+		 return $this->render('FicepPlanningBundle:Machine:add.html.twig', array('form' => $form->createView()));
+	}
 }

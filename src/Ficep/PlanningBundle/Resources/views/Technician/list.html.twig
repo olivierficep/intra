@@ -9,17 +9,30 @@
 			{{ app.session.flashbag.get('notice')[0] }}
 			<br />
 		{% endif %}
-		liste de techniciens
+		{% if page > 0 %}
+			liste de techniciens
+		{% endif %}
 		{% for technician in technicians %}
-			<br />
-			{{ technician.name }} {{ technician.firstName }} {{ technician.email }} <a href="{{ path('ficep_planning_deleteTechnician', 
-			{'id' : technician.id}) }}">remove</a> <a href="{{ path('ficep_plannning_editTechnician', {'id' : technician.id}) }}">edit</a>
+			{% if page > 0 %}
+				<br />
+				{{ technician.name }} {{ technician.firstName }} {{ technician.email }} 
+				<a href="{{ path('ficep_planning_deleteTechnician', {'id' : technician.id}) }}">remove</a> 
+				<a href="{{ path('ficep_plannning_editTechnician', {'id' : technician.id}) }}">edit</a>
+				<a href="{{ path('ficep_planning_listTechnician', {'id' : technician.id}) }}">show</a>
+			{% else %}
+				affichage détails technicien 
+				<br />
+				{{ technician.name }} 
+				<br />
+				{{ technician.firstName }} 
+				<br />
+				{{ technician.email }} 
+			{% endif %}
 		{% endfor %}
-		
-		<br />
 		
 		{% if page > 0 %}
 			{% for p in range(1, nbPages) %}
+			<br />
 			&nbsp;
 			<a href="{{ path('ficep_planning_listTechnician', {'id' : 'all', 'page' : p })}}"> {{ p }}</a>
 			

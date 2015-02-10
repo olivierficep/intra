@@ -13,7 +13,7 @@ use Doctrine\ORM\Mapping as ORM;
 class Machine
 {
 	/**
-	 * @ORM\ManyToOne(targetEntity="Ficep\PlanningBundle\Entity\Custommer")
+	 * @ORM\ManyToOne(targetEntity="Ficep\PlanningBundle\Entity\Custommer", inversedBy="machines")
 	 */
 	 
 	 private $custommers;

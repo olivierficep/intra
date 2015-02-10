@@ -187,48 +187,4 @@ class Custommer
     {
         return $this->phone;
     }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->machines = new \Doctrine\Common\Collections\ArrayCollection();
-    }
-
-    /**
-     * Add machines
-     *
-     * @param \Ficep\PlanningBundle\Entity\Machine $machines
-     * @return Custommer
-     */
-    public function addMachine(\Ficep\PlanningBundle\Entity\Machine $machines)
-    {
-        $this->machines[] = $machines;
-		
-		$machines->setCustommers($this);
-    
-        return $this;
-    }
-
-    /**
-     * Remove machines
-     *
-     * @param \Ficep\PlanningBundle\Entity\Machine $machines
-     */
-    public function removeMachine(\Ficep\PlanningBundle\Entity\Machine $machines)
-    {
-        $this->machines->removeElement($machines);
-		
-		$machines->setCustommers(null);
-    }
-
-    /**
-     * Get machines
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getMachines()
-    {
-        return $this->machines;
-    }
 }
