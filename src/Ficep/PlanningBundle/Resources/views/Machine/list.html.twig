@@ -1,3 +1,5 @@
+{# src/Ficep/PlanningBundle/Resources/views/Machine/list.html.twig #}
+
 <!DOCTYPE html>
 
 <html>
@@ -9,11 +11,24 @@
 			{{ app.session.flashbag.get('notice')[0] }}
 			<br />
 		{% endif %}
-		liste de mlachines
+		{% if page > 0 %}
+			liste de machines
+		{% endif %}
 		{% for machine in machines %}
-			<br />
-			{{ machine.mat }} {{ machine.type }} <a href="{{ path('ficep_planning_deleteMachine', 
-			{'id' : machine.id}) }}">remove</a> <a href="{{ path('ficep_planning_editMachine', {'id' : machine.id}) }}">edit</a>
+			{% if page > 0 %}
+				<br />
+				{{ machine.mat }} {{ machine.type }} 
+				<a href="{{ path('ficep_planning_deleteMachine', {'id' : machine.id}) }}">remove</a> 
+				<a href="{{ path('ficep_planning_editMachine', {'id' : machine.id}) }}">edit</a>
+				<a href="{{ path('ficep_planning_listMachine', {'id' : machine.id}) }}">show</a>
+			{% else %}
+				affichage détails machine
+				<br />
+				{{ machine.mat }} 
+				<br />
+				{{ machine.type }} 
+			{% endif %}
+						
 		{% endfor %}
 		
 		<br />

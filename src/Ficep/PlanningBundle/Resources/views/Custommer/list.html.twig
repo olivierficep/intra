@@ -1,3 +1,5 @@
+{# src/Ficep/PlanningBundle/Resources/views/Custommer/list.html.twig #}
+
 <!DOCTYPE html>
 
 <html>
@@ -9,14 +11,21 @@
 			{{ app.session.flashbag.get('notice')[0] }}
 		{% endif %}
 		
+		{% if page > 0 %}
+			Liste des clients
+		{% endif %}
+		
 		{% for custommer in custommers %}
 			{% if page > 0 %}
 				<br />
 				{{ custommer.name }} {{ custommer.adress }} {{ custommer.zip }} {{ custommer.town }} {{ custommer.phone }}
 				<a href="{{ path('ficep_planning_deleteCustommer', {'id' : custommer.id}) }}">remove</a> 
 				<a href="{{ path('ficep_planning_editCustommer', {'id' : custommer.id}) }}">edit</a>
+				<a href="{{ path('ficep_planning_listCustommer', {'id' : custommer.id}) }}">show</a>
 	
 			{% else %}
+				affichage détails client
+				<br />
 				{{ custommer.name }}
 				<br />
 				{{ custommer.adress }}
@@ -25,8 +34,10 @@
 				<br />
 				{{ custommer.phone }}
 				<br />
+				Liste des machines
 				{% for machine in custommer.machines %}
-					{{machine.mat}}
+					<br />
+					{{machine.mat}} {{machine.type}}
 				{% endfor %}
 			{% endif %}
 		{% endfor %}
