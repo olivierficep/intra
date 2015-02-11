@@ -48,16 +48,16 @@ class Event
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date", type="date")
+     * @ORM\Column(name="dateStart", type="date")
      */
-    private $date;
+    private $dateStart;
 
     /**
-     * @var integer
+     * @var \DateTime
      *
-     * @ORM\Column(name="duration", type="integer")
+     * @ORM\Column(name="dateEnd", type="date")
      */
-    private $duration;
+    private $dateEnd;
 
 
     /**
@@ -183,5 +183,51 @@ class Event
     public function getCustommers()
     {
         return $this->custommers;
+    }
+
+    /**
+     * Set dateStart
+     *
+     * @param \DateTime $dateStart
+     * @return Event
+     */
+    public function setDateStart($dateStart)
+    {
+        $this->dateStart = $dateStart;
+    
+        return $this;
+    }
+
+    /**
+     * Get dateStart
+     *
+     * @return \DateTime 
+     */
+    public function getDateStart()
+    {
+        return $this->dateStart;
+    }
+
+    /**
+     * Set dateEnd
+     *
+     * @param \DateTime $dateEnd
+     * @return Event
+     */
+    public function setDateEnd($dateEnd)
+    {
+        $this->dateEnd = $dateEnd;
+    
+        return $this;
+    }
+
+    /**
+     * Get dateEnd
+     *
+     * @return \DateTime 
+     */
+    public function getDateEnd()
+    {
+        return $this->dateEnd;
     }
 }

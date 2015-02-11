@@ -15,13 +15,14 @@ class EventType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name',	'text')
-            ->add('date',	'date')
-            ->add('duration',	'number')
+            ->add('name',		'text')
+            ->add('dateStart',	'date')
+            ->add('dateEnd',	'date')
             ->add('technicians','entity', array('class' => 'FicepPlanningBundle:Technician',
 												'property' => 'name'))
             ->add('custommers',	'entity', array('class' => 'FicepPlanningBundle:Custommer',
 												'property' => 'name'))
+			->add('save',		'submit')			
         ;
     }
     
